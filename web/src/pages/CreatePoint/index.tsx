@@ -24,7 +24,8 @@ interface IBGEUFResponse {
 interface IBGECityResponse {
   nome: string;
 }
-const CreatePoint = () => {
+
+const CreatePoint: React.FC = () => {
   const [items, setItems] = useState<Item[]>([]);
   const [ufs, setUfs] = useState<string[]>([]);
   const [cities, setCities] = useState<string[]>([]);
@@ -47,12 +48,12 @@ const CreatePoint = () => {
     api.get("items").then((response) => {
       setItems(response.data);
     });
-  });
+  }, []);
 
   useEffect(() => {
     axios
       .get<IBGEUFResponse[]>(
-        "https://servicodados.ibge.gov.br/api/v1/localidades/estados"
+        "https://servicodados.ibge.gov.br/api/v1/localidades/estados?orderBy=nome"
       )
       .then((response) => {
         const ufInitials = response.data.map((uf) => uf.sigla);
@@ -71,7 +72,6 @@ const CreatePoint = () => {
       )
       .then((response) => {
         const cityNames = response.data.map((city) => city.nome);
-        console.log(cityNames);
         setCities(cityNames);
       });
   }, [selectedUf]);
