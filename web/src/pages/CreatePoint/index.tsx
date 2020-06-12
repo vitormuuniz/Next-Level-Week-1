@@ -60,7 +60,7 @@ const CreatePoint: React.FC = () => {
 
         setUfs(ufInitials);
       });
-  });
+  }, []);
 
   useEffect(() => {
     //load cities whenever uf changes
