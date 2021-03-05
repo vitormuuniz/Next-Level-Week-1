@@ -3,12 +3,12 @@
 ##### To run this application you need to execute the following commands in backend and frontend directories: 
       
       
-### Server directory
+### 1. Server directory
     - yarn install;
     - yarn knex:migrate;
     - yarn:knex seed;
     - yarn dev
-### Web directory
+### 2. Web directory
     - yarn install;
     - yarn start;
 
